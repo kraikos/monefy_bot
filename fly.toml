@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for subtitle on 2025-06-25T20:45:48+03:00
+# fly.toml app configuration file generated for monefy-bot-lingering-bird-6761 on 2025-07-01T02:38:01+03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'monefy-bot'
+app = 'monefy-bot-lingering-bird-6761'
 primary_region = 'arn'
 
 [build]
@@ -11,17 +11,12 @@ primary_region = 'arn'
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
-  min_machines_running = 1
+  min_machines_running = 0
   processes = ['app']
 
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-
-[[http_service.checks]]  
-  interval = "10s"  
-  timeout = "2s"  
-  path = "/"  # или "/health", если у вас есть такой route 
