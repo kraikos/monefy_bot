@@ -4,19 +4,23 @@
 #
 
 app = 'monefy-bot-lingering-bird-6761'
-primary_region = 'arn'
 
 [build]
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = true
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 1
   processes = ['app']
 
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+[[http_service.checks]]  
+  interval = "10s"  
+  timeout = "2s"  
+  path = "/"  # или "/health", если у вас есть такой route  
