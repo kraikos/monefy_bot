@@ -11,7 +11,7 @@ import asyncio
 import aiofiles
 
 # Вставьте сюда свой токен
-API_TOKEN = '7997469140:AAHn17KoAV9fy2yK9uQ2HZJQsE6qe3aFQbw'
+API_TOKEN = '7963155896:AAGzoKcuQEuW5lNI2JSh9QA9O_1sWIUcNzM'
 
 # ID администратора для отправки ошибок
 ADMIN_ID = 1459840499  # Замените на ваш ID
