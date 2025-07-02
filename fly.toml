@@ -24,7 +24,3 @@ app = 'monefy-bot-lingering-bird-6761'
   interval = "10s"  
   timeout = "2s"  
 <<<<<<< HEAD
-  path = "/"  # или "/health", если у вас есть такой route  
-=======
-  path = "/"  # или "/health", если у вас есть такой route  
->>>>>>> 804c6ac44303ddc1190f3d106d7aefbebb0862f6
