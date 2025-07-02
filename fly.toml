@@ -1,16 +1,12 @@
-# fly.toml app configuration file generated for monefy-bot-lingering-bird-6761 on 2025-07-01T02:38:01+03:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'monefy-bot-lingering-bird-6761'
 
 [build]
+  dockerfile = "Dockerfile"  # Явное указание Dockerfile
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = false  # Главное исправление!
   auto_start_machines = true
   min_machines_running = 1
   processes = ['app']
@@ -20,6 +16,9 @@ app = 'monefy-bot-lingering-bird-6761'
   cpu_kind = 'shared'
   cpus = 1
 
-[[http_service.checks]]  
-  interval = "10s"  
-  timeout = "2s"  
+[[http_service.checks]]
+  interval = "15s"  # Увеличенный интервал
+  timeout = "5s"    # Увеличенный таймаут
+  grace_period = "5s"
+  method = "GET"
+  path = "/health"  # Должен быть реализован в вашем боте
