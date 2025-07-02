@@ -1,4 +1,4 @@
-import telebot
+﻿import telebot
 import os
 import json
 from datetime import datetime, timedelta
@@ -9,9 +9,10 @@ import csv
 import aiosqlite
 import asyncio
 import aiofiles
+import threading
 
 # Вставьте сюда свой токен
-API_TOKEN = '7997469140:AAHn17KoAV9fy2yK9uQ2HZJQsE6qe3aFQbw'
+API_TOKEN = '7963155896:AAGzoKcuQEuW5lNI2JSh9QA9O_1sWIUcNzM'
 
 # ID администратора для отправки ошибок
 ADMIN_ID = 1459840499  # Замените на ваш ID
@@ -23,6 +24,9 @@ if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
 DB_PATH = 'monefy_data.db'
+
+# Новый способ хранения всех пользователей в одном файле
+file_lock = threading.Lock()
 
 async def init_db():
     async with aiosqlite.connect(DB_PATH) as db:
@@ -73,11 +77,23 @@ async def init_db():
 # Для запуска инициализации базы при старте
 asyncio.run(init_db())
 
-def get_user_file(user_id):
-    return os.path.join(DATA_DIR, f'{user_id}.json')
+ALL_USERS_FILE = 'all_users_data.json'
+
+def get_all_users_data():
+    if not os.path.exists(ALL_USERS_FILE):
+        return {}
+    with open(ALL_USERS_FILE, 'r', encoding='utf-8') as f:
+        try:
+            return json.load(f)
+        except Exception:
+            return {}
+
+def save_all_users_data(data):
+    with file_lock:
+        with open(ALL_USERS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
 
 async def async_load_user_data(user_id):
-    file_path = get_user_file(user_id)
     default = {
         'balance': 0,
         'history': [],
@@ -90,33 +106,29 @@ async def async_load_user_data(user_id):
         'currency': '₽',
         'limits': {}
     }
-    if os.path.exists(file_path):
-        try:
-            async with aiofiles.open(file_path, 'r', encoding='utf-8') as f:
-                content = await f.read()
-                data = json.loads(content)
-            for k in default:
-                if k not in data:
-                    data[k] = default[k]
-            for cat in default['income_categories']:
-                if cat not in data['income_categories']:
-                    data['income_categories'].append(cat)
-            for cat in default['expense_categories']:
-                if cat not in data['expense_categories']:
-                    data['expense_categories'].append(cat)
-            return data
-        except Exception:
-            # Повреждённый файл — создаём новый профиль
-            async with aiofiles.open(file_path, 'w', encoding='utf-8') as f:
-                await f.write(json.dumps(default, ensure_ascii=False, indent=2))
-            return default
-    else:
-        return default
+    all_data = get_all_users_data()
+    user_id_str = str(user_id)
+    data = all_data.get(user_id_str, None)
+    if data is None:
+        data = default.copy()
+        all_data[user_id_str] = data
+        save_all_users_data(all_data)
+    # Обновление структуры, если что-то добавилось
+    for k in default:
+        if k not in data:
+            data[k] = default[k]
+    for cat in default['income_categories']:
+        if cat not in data['income_categories']:
+            data['income_categories'].append(cat)
+    for cat in default['expense_categories']:
+        if cat not in data['expense_categories']:
+            data['expense_categories'].append(cat)
+    return data
 
 async def async_save_user_data(user_id, data):
-    file_path = get_user_file(user_id)
-    async with aiofiles.open(file_path, 'w', encoding='utf-8') as f:
-        await f.write(json.dumps(data, ensure_ascii=False, indent=2))
+    all_data = get_all_users_data()
+    all_data[str(user_id)] = data
+    save_all_users_data(all_data)
 
 def load_user_data(user_id):
     return asyncio.run(async_load_user_data(user_id))
@@ -263,7 +275,8 @@ def show_history_for_period(message, start, end):
     if not ops:
         bot.send_message(message.chat.id, 'Нет операций за выбранный период.', reply_markup=main_menu())
         return
-    text = f'Операции с {start.strftime("%d.%m.%Y")} по {end.strftime("%d.%m.%Y")}:'
+    period_str = f'Период: с {start.strftime("%d.%m.%Y")} по {end.strftime("%d.%m.%Y")}'
+    text = f'{period_str}\nОперации:'
     for op in ops[::-1]:
         sign = '+' if op['type'] == 'income' else '-'
         category = op.get('category', 'Без категории')
@@ -372,7 +385,8 @@ def show_stats_for_period(message, start, end):
                 expense += op['amount']
                 expense_by_cat[cat] = expense_by_cat.get(cat, 0) + op['amount']
     cur = data.get('currency', '₽')
-    text = f'Статистика с {start.strftime("%d.%m.%Y")} по {end.strftime("%d.%m.%Y")}:\n\nДоход: {income}{cur}\nРасход: {expense}{cur}\nБаланс: {data["balance"]}{cur}\n'
+    period_str = f'Период: с {start.strftime("%d.%m.%Y")} по {end.strftime("%d.%m.%Y")}'
+    text = f'{period_str}\n\nСтатистика:\n\nДоход: {income}{cur}\nРасход: {expense}{cur}\nБаланс: {data["balance"]}{cur}\n'
     if income_by_cat:
         text += '\nДоход по категориям:'
         for cat, val in income_by_cat.items():
@@ -426,7 +440,8 @@ def send_graph(message):
     plt.savefig(buf, format='png')
     buf.seek(0)
     plt.close()
-    bot.send_photo(message.chat.id, buf, caption=f'График за {period}')
+    period_str = f'Период: с {dates[0]} по {dates[-1]}'
+    bot.send_photo(message.chat.id, buf, caption=f'График за {period}\n{period_str}')
     buf.close()
 
 @bot.message_handler(func=lambda m: m.text == 'Круговая диаграмма расходов')
@@ -469,7 +484,8 @@ def send_pie_chart_period(message):
     plt.savefig(buf, format='png')
     buf.seek(0)
     plt.close()
-    bot.send_photo(message.chat.id, buf, caption=f'Круговая диаграмма расходов за {period}')
+    period_str = f'Период: с {start.strftime("%d.%m.%Y")} по {now.strftime("%d.%m.%Y")}'
+    bot.send_photo(message.chat.id, buf, caption=f'Круговая диаграмма расходов за {period}\n{period_str}')
     buf.close()
 
 @bot.message_handler(func=lambda m: m.text == 'Детальный график расходов')
@@ -522,7 +538,8 @@ def send_detailed_expense_graph(message):
     plt.savefig(buf, format='png')
     buf.seek(0)
     plt.close()
-    bot.send_photo(message.chat.id, buf, caption=f'Детальный график расходов за {period}')
+    period_str = f'Период: с {dates[0]} по {dates[-1]}'
+    bot.send_photo(message.chat.id, buf, caption=f'Детальный график расходов за {period}\n{period_str}')
     buf.close()
 
 @bot.message_handler(func=lambda m: m.text == 'Редактировать операцию')
@@ -632,7 +649,7 @@ def edit_op_action(message):
         idx = int(message.text.split(':')[0])
         op = state['ops'][idx]
     except Exception:
-        bot.send_message(message.chat.id, 'Выберите операцию из списка.', reply_markup=main_menu())
+        bot.send_message(message.chat.id, 'Ошибка: выберите операцию из списка кнопок ниже. Не вводите вручную.', reply_markup=main_menu())
         user_states[user_id] = {'state': None}
         return
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -680,7 +697,7 @@ def edit_op_amount(message):
     try:
         amount = float(message.text.replace(',', '.'))
     except Exception:
-        bot.send_message(message.chat.id, 'Введите корректную сумму:', reply_markup=back_menu())
+        bot.send_message(message.chat.id, 'Ошибка: сумма должна быть числом. Введите сумму, например: 100 или 99.50', reply_markup=back_menu())
         return
     user_states[user_id]['new_amount'] = amount
     op = state['op']
@@ -710,7 +727,7 @@ def edit_op_category(message):
     else:
         cats = data['expense_categories']
     if message.text not in cats:
-        bot.send_message(message.chat.id, 'Выберите категорию из списка.', reply_markup=category_menu(cats))
+        bot.send_message(message.chat.id, 'Ошибка: выберите категорию из списка кнопок ниже. Не вводите вручную.', reply_markup=category_menu(cats))
         return
     user_states[user_id]['new_category'] = message.text
     bot.send_message(message.chat.id, f'Введите новое описание (было: {op.get("description", "-")}):', reply_markup=skip_menu())
@@ -815,7 +832,7 @@ def save_limit(message):
     try:
         lim = float(message.text.replace(',', '.'))
     except Exception:
-        bot.send_message(message.chat.id, 'Введите корректное число.', reply_markup=back_menu())
+        bot.send_message(message.chat.id, 'Ошибка: лимит должен быть числом. Введите лимит, например: 1000 или 500.50', reply_markup=back_menu())
         return
     data = load_user_data(user_id)
     data['limits'][state['cat']] = lim
@@ -833,7 +850,7 @@ def del_limit(message):
         save_user_data(user_id, data)
         bot.send_message(message.chat.id, f'Лимит для "{cat}" удалён.', reply_markup=settings_menu())
     else:
-        bot.send_message(message.chat.id, 'Лимит не найден.', reply_markup=settings_menu())
+        bot.send_message(message.chat.id, 'Ошибка: лимит для этой категории не найден. Возможно, он уже был удалён.', reply_markup=settings_menu())
 
 @bot.message_handler(func=lambda m: m.text == 'Импорт из Monefy')
 def import_monefy_start(message):
@@ -857,7 +874,7 @@ def import_monefy_file(message):
         except Exception:
             continue
     if text is None:
-        bot.send_message(message.chat.id, 'Не удалось прочитать файл. Попробуйте сохранить его в формате CSV (UTF-8) и отправить снова.', reply_markup=main_menu())
+        bot.send_message(message.chat.id, 'Ошибка: не удалось прочитать файл. Проверьте, что вы отправили CSV-файл экспорта из Monefy.\n\nИнструкция:\n1. В приложении Monefy выберите экспорт в CSV.\n2. Отправьте этот файл боту.\n3. Файл должен быть в кодировке UTF-8.\n\nЕсли не получается — попробуйте экспортировать заново или обратитесь к администратору.', reply_markup=main_menu())
         user_states[user_id] = {'state': None}
         return
     import csv
@@ -906,7 +923,18 @@ def import_monefy_file(message):
         except Exception:
             continue
     save_user_data(user_id, data)
-    bot.send_message(message.chat.id, f'Импортировано операций: {count}', reply_markup=main_menu())
+    if count == 0:
+        bot.send_message(message.chat.id, (
+            'Импортировано операций: 0\n'
+            'Проверьте, что вы отправили именно CSV-файл экспорта из Monefy.\n\n'
+            'Инструкция:\n'
+            '1. В приложении Monefy выберите экспорт в CSV.\n'
+            '2. Отправьте этот файл боту.\n'
+            '3. Файл должен быть в кодировке UTF-8.\n\n'
+            'Если не получается — попробуйте экспортировать заново или обратитесь к администратору.'
+        ), reply_markup=main_menu())
+    else:
+        bot.send_message(message.chat.id, f'Импортировано операций: {count}', reply_markup=main_menu())
     user_states[user_id] = {'state': None}
 
 @bot.message_handler(func=lambda m: m.text == 'Экспорт истории')
@@ -1148,7 +1176,7 @@ def search_by_amount(message):
             val = float(query)
             results = [op for op in data['history'] if op['amount'] == val]
     except Exception:
-        bot.send_message(message.chat.id, 'Введите сумму или диапазон корректно (например, 100 или 50-200):', reply_markup=back_menu())
+        bot.send_message(message.chat.id, 'Ошибка: введите сумму или диапазон корректно. Пример: 100 или 50-200', reply_markup=back_menu())
         return
     send_search_results(message, results)
 
@@ -1186,7 +1214,7 @@ def search_by_date(message):
 def send_search_results(message, results):
     user_states[message.from_user.id] = {'state': None}
     if not results:
-        bot.send_message(message.chat.id, 'Ничего не найдено.', reply_markup=main_menu())
+        bot.send_message(message.chat.id, 'Ничего не найдено. Проверьте правильность ввода или попробуйте другой критерий поиска.', reply_markup=main_menu())
         return
     cur = load_user_data(message.from_user.id).get('currency', '₽')
     text = f'Найдено операций: {len(results)}'
@@ -1214,7 +1242,8 @@ def handle_all(message):
             bot.send_message(message.chat.id, 'Введите описание (или - если не нужно):', reply_markup=skip_menu())
             user_states[user_id]['state'] = 'income_desc'
         except Exception:
-            bot.send_message(message.chat.id, 'Введите корректную сумму:', reply_markup=back_menu())
+            bot.send_message(message.chat.id, 'Ошибка: сумма должна быть числом. Введите сумму, например: 100 или 99.50', reply_markup=back_menu())
+            return
     elif state == 'income_desc':
         amount = user_states[user_id]['amount']
         category = user_states[user_id]['category']
@@ -1245,7 +1274,8 @@ def handle_all(message):
             bot.send_message(message.chat.id, 'Введите описание (или - если не нужно):', reply_markup=skip_menu())
             user_states[user_id]['state'] = 'expense_desc'
         except Exception:
-            bot.send_message(message.chat.id, 'Введите корректную сумму:', reply_markup=back_menu())
+            bot.send_message(message.chat.id, 'Ошибка: сумма должна быть числом. Введите сумму, например: 100 или 99.50', reply_markup=back_menu())
+            return
     elif state == 'expense_desc':
         amount = user_states[user_id]['amount']
         category = user_states[user_id]['category']
@@ -1309,7 +1339,7 @@ def handle_all(message):
         bot.send_message(message.chat.id, f'Категория "{message.text}" удалена!', reply_markup=settings_menu())
         user_states[user_id] = {'state': 'settings'}
     else:
-        bot.send_message(message.chat.id, 'Пожалуйста, выберите действие через меню.', reply_markup=main_menu())
+        bot.send_message(message.chat.id, 'Ошибка: выберите действие через меню. Не вводите команды вручную.', reply_markup=main_menu())
         user_states[user_id] = {'state': None}
 
 # --- Универсальный выбор периода ---

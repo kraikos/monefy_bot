@@ -1,0 +1,853 @@
+{
+  "1459840499": {
+    "balance": 100.0,
+    "history": [
+      {
+        "type": "income",
+        "amount": 162.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 40.0,
+        "category": "Зависимости",
+        "description": "На альфу",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 35.0,
+        "category": "Долг",
+        "description": "Дупелю",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 21.0,
+        "category": "Долг",
+        "description": "Беларусбанк",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 40.0,
+        "category": "Подарки",
+        "description": "Стасу",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.0,
+        "category": "Еда",
+        "description": "На альфу",
+        "date": "2025-05-20 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 150.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-05-23 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 15.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-23 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 65.0,
+        "category": "Инвестиции",
+        "description": "",
+        "date": "2025-05-23 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-26 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 12.0,
+        "category": "Гигиена",
+        "description": "",
+        "date": "2025-05-28 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 3.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-29 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 10.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-29 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 15.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-30 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 20.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-02 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-02 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 8.0,
+        "category": "Развлечения",
+        "description": "",
+        "date": "2025-06-09 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 13.0,
+        "category": "Такси",
+        "description": "",
+        "date": "2025-06-09 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 37.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-06-10 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 7.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-10 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 8.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-12 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 22.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-16 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 30.0,
+        "category": "Подарки",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 60.0,
+        "category": "Инвестиции",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 10.0,
+        "category": "Долг",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 155.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.0,
+        "category": "Развлечения",
+        "description": "",
+        "date": "2025-06-20 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 20.0,
+        "category": "Развлечения",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 30.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 100.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 40.0,
+        "category": "Зависимости",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 10.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 162.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 40.0,
+        "category": "Зависимости",
+        "description": "На альфу",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 35.0,
+        "category": "Долг",
+        "description": "Дупелю",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 21.0,
+        "category": "Долг",
+        "description": "Беларусбанк",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 40.0,
+        "category": "Подарки",
+        "description": "Стасу",
+        "date": "2025-05-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.0,
+        "category": "Еда",
+        "description": "На альфу",
+        "date": "2025-05-20 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 150.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-05-23 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 15.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-23 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 65.0,
+        "category": "Инвестиции",
+        "description": "",
+        "date": "2025-05-23 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-26 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 12.0,
+        "category": "Гигиена",
+        "description": "",
+        "date": "2025-05-28 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 3.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-29 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 10.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-29 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 15.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-05-30 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 20.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-02 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-02 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 8.0,
+        "category": "Развлечения",
+        "description": "",
+        "date": "2025-06-09 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 13.0,
+        "category": "Такси",
+        "description": "",
+        "date": "2025-06-09 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 37.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-06-10 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 7.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-10 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 8.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-12 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 22.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-16 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 30.0,
+        "category": "Подарки",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 60.0,
+        "category": "Инвестиции",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 10.0,
+        "category": "Долг",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 155.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.0,
+        "category": "Развлечения",
+        "description": "",
+        "date": "2025-06-20 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 20.0,
+        "category": "Развлечения",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 30.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 100.0,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 40.0,
+        "category": "Зависимости",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 10.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-26 00:00:00"
+      }
+    ],
+    "income_categories": [
+      "Зарплата",
+      "Подарок",
+      "Бонус",
+      "Продажа",
+      "Кэшбэк",
+      "Премия",
+      "Стипендия",
+      "Инвестиции",
+      "Фриланс",
+      "Аренда",
+      "Дивиденды",
+      "Возврат долга",
+      "Прочее"
+    ],
+    "expense_categories": [
+      "Еда",
+      "Транспорт",
+      "Развлечения",
+      "Кафе",
+      "Одежда",
+      "Образование",
+      "Здоровье",
+      "Путешествия",
+      "Мобильная связь",
+      "Интернет",
+      "Коммунальные услуги",
+      "Дом",
+      "Питомцы",
+      "Подарки",
+      "Красота",
+      "Спорт",
+      "Техника",
+      "Дети",
+      "Авто",
+      "Налоги",
+      "Штрафы",
+      "Прочее",
+      "Зависимости",
+      "Долг",
+      "Инвестиции",
+      "Гигиена",
+      "Такси"
+    ],
+    "currency": "₽",
+    "limits": {}
+  },
+  "811056737": {
+    "balance": 0.0,
+    "history": [
+      {
+        "type": "income",
+        "amount": 20.0,
+        "category": "Долг",
+        "description": "Долг",
+        "date": "2025-06-13 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 0.2,
+        "category": "Еда",
+        "description": "П",
+        "date": "2025-06-13 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 4.74,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-13 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 5.0,
+        "category": "Долг",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 4.72,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 60.0,
+        "category": "Мама",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.54,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 0.92,
+        "category": "Транспорт",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 4.97,
+        "category": "Транспорт",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 36.09,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 1.39,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 50.0,
+        "category": "Прочее",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 10.0,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 155.38,
+        "category": "Зарплата",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 25.0,
+        "category": "Долг",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 22.0,
+        "category": "Связь",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 12.0,
+        "category": "Развлечения",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 65.0,
+        "category": "Жилье",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 12.0,
+        "category": "Яндекс",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 2.0,
+        "category": "Любимая",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 4.33,
+        "category": "Здоровье",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.01,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-19 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 2.05,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-20 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 22.0,
+        "category": "Курево",
+        "description": "",
+        "date": "2025-06-20 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 1.7,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-20 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 2.02,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-20 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 8.4,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-21 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 5.81,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-22 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 1.89,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-22 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 3.05,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-23 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 4.66,
+        "category": "Еда",
+        "description": "",
+        "date": "2025-06-23 00:00:00"
+      },
+      {
+        "type": "income",
+        "amount": 19.06,
+        "category": "Прочее",
+        "description": "",
+        "date": "2025-07-01 00:00:00"
+      },
+      {
+        "type": "expense",
+        "amount": 9.52,
+        "category": "Прочее",
+        "description": "",
+        "date": "2025-07-01 00:28:56"
+      },
+      {
+        "type": "income",
+        "amount": 0.0,
+        "category": "Прочее",
+        "description": "",
+        "date": "2025-07-01 00:39:06"
+      },
+      {
+        "type": "income",
+        "amount": 0.0,
+        "category": "Прочее",
+        "description": "",
+        "date": "2025-07-01 00:45:08"
+      }
+    ],
+    "income_categories": [
+      "Зарплата",
+      "Подарок",
+      "Бонус",
+      "Продажа",
+      "Кэшбэк",
+      "Премия",
+      "Стипендия",
+      "Инвестиции",
+      "Фриланс",
+      "Аренда",
+      "Дивиденды",
+      "Возврат долга",
+      "Прочее",
+      "Долг",
+      "Мама"
+    ],
+    "expense_categories": [
+      "Еда",
+      "Транспорт",
+      "Развлечения",
+      "Кафе",
+      "Одежда",
+      "Образование",
+      "Здоровье",
+      "Путешествия",
+      "Мобильная связь",
+      "Интернет",
+      "Коммунальные услуги",
+      "Дом",
+      "Питомцы",
+      "Подарки",
+      "Красота",
+      "Спорт",
+      "Техника",
+      "Дети",
+      "Авто",
+      "Налоги",
+      "Штрафы",
+      "Прочее",
+      "Долг",
+      "Связь",
+      "Жилье",
+      "Яндекс",
+      "Любимая",
+      "Курево"
+    ],
+    "currency": "Br",
+    "limits": {}
+  },
+  "1465233793": {
+    "balance": 1.3,
+    "history": [
+      {
+        "type": "income",
+        "amount": 1.3,
+        "category": "Аренда",
+        "description": "",
+        "date": "2025-07-02 00:36:36"
+      }
+    ],
+    "income_categories": [
+      "Зарплата",
+      "Подарок",
+      "Бонус",
+      "Продажа",
+      "Кэшбэк",
+      "Премия",
+      "Стипендия",
+      "Инвестиции",
+      "Фриланс",
+      "Аренда",
+      "Дивиденды",
+      "Возврат долга",
+      "Прочее"
+    ],
+    "expense_categories": [
+      "Еда",
+      "Транспорт",
+      "Развлечения",
+      "Кафе",
+      "Одежда",
+      "Образование",
+      "Здоровье",
+      "Путешествия",
+      "Мобильная связь",
+      "Интернет",
+      "Коммунальные услуги",
+      "Дом",
+      "Питомцы",
+      "Подарки",
+      "Красота",
+      "Спорт",
+      "Техника",
+      "Дети",
+      "Авто",
+      "Налоги",
+      "Штрафы",
+      "Прочее"
+    ],
+    "currency": "₽",
+    "limits": {}
+  }
+}
