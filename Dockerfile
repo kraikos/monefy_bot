@@ -3,4 +3,5 @@ WORKDIR /app
 COPY requirements.txt .
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 8080
 CMD ["python", "monefy_bot/monefy_bot.py"]
